@@ -14,6 +14,16 @@ Personal project: end-to-end ETL that ingests sales CSV data into PostgreSQL, ru
 3. Runs revenue-trend analysis with CTEs and window functions
 4. Flags nulls, duplicates, and schema violations in data-quality checks
 
+## Results (from `data/sample/sales.csv`)
+
+Ran the quality checks and revenue query logic against the sample CSV on 2026-10-12 (synthetic demo data, not a live retailer).
+
+- Loaded **100,050** rows (unique `order_id`), date range **2025-01-01** to **2025-12-31** (365 days), **5,000** customers, **200** products
+- Quality checks: **0** null `order_id`/`amount`, **0** duplicate `order_id`, **0** negative `amount`
+- Aggregate `amount` sum: **25,304,089.56** across regions (East / South / North / West roughly balanced)
+
+Sample data is synthetic. Treat these as pipeline proof, not business insights.
+
 ## Layout
 ```
 dags/           Airflow DAG definitions
